@@ -6,11 +6,12 @@ type ButtonProps = {
 
 function Button({
   handler,
+  children,
   ...restProp
 }: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button {...restProp} onClick={handler}>
-      Click
+      {children}
     </button>
   )
 }

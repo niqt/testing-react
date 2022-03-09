@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import Button from './Components/Button'
 import Text from './Components/Text'
@@ -7,7 +7,8 @@ import ReactDOM from 'react-dom'
 import getRequest from './Api/Client'
 
 function App() {
-  const [nick, setNick] = useState('')
+  const initialName = 'niqt'
+  const [nick, setNick] = useState(initialName)
   const [name, setName] = useState('')
 
   async function fetchUser() {
@@ -27,6 +28,10 @@ function App() {
     }
     event.preventDefault()
   }
+
+  useEffect(() => {
+    fetchUser()
+  }, [])
 
   return (
     <div className="App">
@@ -51,7 +56,9 @@ function App() {
           />
         </p>
         <p>
-          <Button type="submit" handler={handleSubmit} />
+          <Button type="submit" handler={handleSubmit}>
+            Search
+          </Button>
         </p>
       </form>
     </div>
