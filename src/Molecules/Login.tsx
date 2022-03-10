@@ -3,8 +3,11 @@ import '../App.css'
 import Button from '../Components/Button'
 import Text from '../Components/Text'
 import { TextField } from '../Components/TextField'
+import { useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function Login() {
+  let navigate = useNavigate()
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
 
@@ -12,7 +15,7 @@ function Login() {
     if (password.length == 0 && user.length == 0) {
       alert('Insert username and password')
     } else {
-      //try to log
+      navigate('home', { replace: true })
     }
     event.preventDefault()
   }
@@ -40,9 +43,13 @@ function Login() {
           />
         </p>
         <p>
-          <Button type="submit" handler={handleSubmit} />
+          <Button type="submit" handler={handleSubmit}>
+            Login
+          </Button>
         </p>
       </form>
     </div>
   )
 }
+
+export default Login
