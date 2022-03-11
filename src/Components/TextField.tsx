@@ -5,6 +5,10 @@ type TextFieldProps = {
   handler: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const TextField = (props: TextFieldProps) => {
-  return <input value={props.text} onChange={props.handler} />
+export const TextField = ({
+  text,
+  handler,
+  ...restProp
+}: TextFieldProps & React.InputHTMLAttributes<HTMLInputElement>) => {
+  return <input value={text} onChange={handler} {...restProp} />
 }
